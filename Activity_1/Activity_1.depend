@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1619118639 source:d:\embeddedc\activity_1\fuse.c
+	<avr/io.h>
+
+1619119371 source:d:\embeddedc\activity_1\main.c
+	<avr/io.h>
+	<util/delay.h>
+
