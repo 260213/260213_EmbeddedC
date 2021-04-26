@@ -11,6 +11,8 @@
 #include "config.h"
 
 #include "ledstat.h"
+
+#include "ReadADC.h"
 /**
  * @brief Initialize all the peripherals
  * 
@@ -23,7 +25,8 @@ void peripheral_init(void)
     DDRD&=~(1<<PD0);
     PORTD|=(1<<PD0);
     PORTD|=(1<<PD1);
-
+    InitADC();
+    
 }
 void change_led_state(uint8_t state)
 {
@@ -32,6 +35,7 @@ void change_led_state(uint8_t state)
 
 int main(void)
 {
+    uint16_t temp;
     // Initialize peripherals
     peripheral_init();
     while(1)
@@ -41,6 +45,7 @@ int main(void)
             if(!(PIND&(1<<PD1)))
             {
                 change_led_state(LED_ON);
+                temp=ReadADC(0);
             }
         }
         else
@@ -48,4 +53,5 @@ int main(void)
             change_led_state(LED_OFF);
         }
     }
+    return 0;
 }

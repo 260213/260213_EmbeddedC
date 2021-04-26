@@ -4,6 +4,7 @@ BUILD_DIR = Build
 
 # All Source code files
 SRC = main.c\
+src/ReadADC.c\
 
 
 # All header file paths
