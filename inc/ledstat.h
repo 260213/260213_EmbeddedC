@@ -17,8 +17,7 @@
 #define LED_ON 	(0x01)			/**< LED state HIGH */
 #define LED_OFF	(0x00)			/**< LED state LOW */
 
-#define LED_ON_TIME     (1000)  /**< LED ON time in milli seconds  */
-#define LED_OFF_TIME    (500)   /**< LED OFF time in milli seconds */
+
 
 /**
  * Include files
