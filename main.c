@@ -39,9 +39,9 @@ int main(void)
     peripheral_init();
     while(1)
     {
-        if(!(PIND&(1<<PD0)))
+        if(!(PIND&(1<<PD0))) //If switch_1 is ON
         {
-            if(!(PIND&(1<<PD1)))
+            if(!(PIND&(1<<PD1))) //If switch_2 is ON
             {
                 ledstat(LED_ON);
                 temp=ReadADC(0);
