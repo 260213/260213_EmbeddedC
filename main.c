@@ -13,6 +13,8 @@
 #include "ledstat.h"
 
 #include "ReadADC.h"
+
+#include<avr/io.h>
 /**
  * @brief Initialize all the peripherals
  * 
@@ -28,10 +30,7 @@ void peripheral_init(void)
     InitADC();
     
 }
-void change_led_state(uint8_t state)
-{
-	LED_PORT = (state << LED_PIN);
-}
+
 
 int main(void)
 {
@@ -44,13 +43,13 @@ int main(void)
         {
             if(!(PIND&(1<<PD1)))
             {
-                change_led_state(LED_ON);
+                ledstat(LED_ON);
                 temp=ReadADC(0);
             }
         }
         else
         {
-            change_led_state(LED_OFF);
+            ledstat(LED_OFF);
         }
     }
     return 0;

@@ -11,18 +11,13 @@
  * 
  */
 
-/**
- * Macro Definitions
- */
-#define LED_ON 	(0x01)			/**< LED state HIGH */
-#define LED_OFF	(0x00)			/**< LED state LOW */
-
 
 
 /**
  * Include files
  */ 
 #include <avr/io.h>
+#include "ledstat.h"
 
 /**
  * Function Definitions
@@ -33,7 +28,7 @@
  * 
  * @param state Pin level to which the LED Pin should be set
  */
-void change_led_state(uint8_t state);
+void ledstat(uint8_t state);
 
 
 #endif /** __LEDSTAT_H_ */
