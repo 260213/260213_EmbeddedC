@@ -10,7 +10,7 @@
  */
 // include files
 #include<avr/io.h>
-#include"config.h"
+#include "ledstat.h"
 /**
  * @brief Change the state of the LED Pin according to the value of state
  * 
