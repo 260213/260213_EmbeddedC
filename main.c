@@ -11,10 +11,10 @@
 
 
 #include "ledstat.h"
-
 #include "ReadADC.h"
-
 #include<avr/io.h>
+
+
 /**
  * @brief Initialize all the peripherals
  * 
@@ -28,7 +28,6 @@ void peripheral_init(void)
     PORTD|=(1<<PD0);
     PORTD|=(1<<PD1);
     InitADC();
-    
 }
 
 
@@ -39,17 +38,17 @@ int main(void)
     peripheral_init();
     while(1)
     {
-        if(!(PIND&(1<<PD0))) //If switch_1 is ON
+        if(SENSOR_ON) //If switch_1 is ON
         {
-            if(!(PIND&(1<<PD1))) //If switch_2 is ON
+            if(HEAT_ON) //If switch_2 is ON
             {
-                ledstat(LED_ON);
+                ledstat(LED_ON);//LED is ON
                 temp=ReadADC(0);
             }
         }
         else
         {
-            ledstat(LED_OFF);
+            ledstat(LED_OFF);//LED is OFF
         }
     }
     return 0;
