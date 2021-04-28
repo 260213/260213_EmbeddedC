@@ -18,6 +18,9 @@
  */ 
 #include <avr/io.h>
 #include "ledstat.h"
+
+//Macro definition 
+
 #define LED_ON 	(0x01)			/**< LED state HIGH */
 #define LED_OFF	(0x00)			/**< LED state LOW */
 
