@@ -13,6 +13,7 @@
 #include "ledstat.h"
 #include "ReadADC.h"
 #include "OutPWM.h"
+#include"UART.h"
 #include<avr/io.h>
 
 
@@ -29,16 +30,19 @@ void peripheral_init(void)
     InitADC();
     /*Configure PWM registers and pins*/
     InitPWM();
+    /*Configure UART serial communication pin*/
+    InitUART(103);
 }
     
    
 uint16_t temp;
-
+char temp_data;
 int main(void)
 {
     /*uint16_t temp;*/
     // Initialize peripherals
     peripheral_init();
+    
     while(1)
     {
         if(SENSOR_ON) //If switch_1 is ON
@@ -47,7 +51,9 @@ int main(void)
             {
                 ledstat(LED_ON);//LED is ON
                 temp=ReadADC(0);
-                OutPWM(temp);
+                temp_data = OutPWM(temp);
+                UARTwrite(temp_data);
+
             }
             else
             {

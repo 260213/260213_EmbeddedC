@@ -6,6 +6,7 @@ BUILD_DIR = Build
 SRC = src/ReadADC.c\
 src/ledstat.c\
 src/OutPWM.c\
+src/UART.c\
 main.c\
 
 
