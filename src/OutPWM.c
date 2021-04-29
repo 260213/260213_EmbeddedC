@@ -11,7 +11,10 @@
 #include"OutPWM.h"
 #include<util/delay.h>
 #include<avr/io.h>
-
+/**
+ * @brief initializing timer and counter register
+ * 
+ */
 void InitPWM(void)
 {
     /*Configuring the registers and ports*/
@@ -20,6 +23,11 @@ void InitPWM(void)
     DDRB|=(1<<PB1);
 
 }
+/**
+ * @brief Output with respect to analog input
+ * 
+ * @param ADC_val 
+ */
 void OutPWM (uint16_t ADC_val)
 {
     
