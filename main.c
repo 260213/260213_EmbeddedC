@@ -12,6 +12,7 @@
 
 #include "ledstat.h"
 #include "ReadADC.h"
+#include "OutPWM.h"
 #include<avr/io.h>
 
 
@@ -23,17 +24,19 @@
 void peripheral_init(void)
 {
     /*Configure LED and Switch pins*/
-    DDRB|=(1<<PB1);
-    DDRD&=~(1<<PD0);
-    PORTD|=(1<<PD0);
-    PORTD|=(1<<PD1);
+    InitLED();
+    /*Configure ADC registers and pins*/
     InitADC();
+    /*Configure PWM registers and pins*/
+    InitPWM();
 }
-
+    
+   
+uint16_t temp;
 
 int main(void)
 {
-    uint16_t temp;
+    /*uint16_t temp;*/
     // Initialize peripherals
     peripheral_init();
     while(1)
@@ -44,11 +47,18 @@ int main(void)
             {
                 ledstat(LED_ON);//LED is ON
                 temp=ReadADC(0);
+                OutPWM(temp);
+            }
+            else
+            {
+                
+                ledstat(LED_OFF);
             }
         }
         else
         {
             ledstat(LED_OFF);//LED is OFF
+            OCR1A=0;
         }
     }
     return 0;
