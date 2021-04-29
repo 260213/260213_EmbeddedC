@@ -24,19 +24,7 @@ void InitUART(uint16_t ubrr_value){
     UCSR0B = (1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0)|(1<<TXCIE0);
 
 }
-/**
- * @brief Read characters coming from UART port
- * 
- * @return char 
- */
-char UARTread()
-{
-    while(!(UCSR0A & (1<<RXC0))) //Data not recieved
-    {
 
-    }
-    return UDR0;
-}
 /**
  * @brief write data on UART ports
  * 
