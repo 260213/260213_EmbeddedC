@@ -18,5 +18,9 @@
  * @return char
  */
 char OutPWM(uint16_t temp_value);
+/**
+ * @brief port configuration for PWM
+ * 
+ */
 void InitPWM(void);
 #endif
